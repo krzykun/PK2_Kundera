@@ -1,5 +1,7 @@
 Ponieważ funkcja oczekuje otrzymania parametrów, dodaję schemat wywolania funkcji:
+
     <0> <!> <2> <3> <4> <5> <6>
+    
     0 - nazwa pliku, nieuzywane
     1 - nazwa pliku wejsciowego. Plik wejsciowy musi istniec zanim wywolamy ten program
     2 - format, w jakim dane maja byc zapisane w pliku wyjsciowym

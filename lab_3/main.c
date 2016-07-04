@@ -183,6 +183,8 @@ Tekst * sortuj(Tekst *mt)
 //======================================================================================
 //  main()
 /*
+    Na zapytanie "Gotowy na sortowanie?" nalezy odpowiedziec 0 lub 1, wprowadzenie innej
+    wartosci prawdopodobnie spowoduje sortowanie.
 */
 //======================================================================================
 int main()
@@ -263,7 +265,7 @@ int main()
     int czy_sortowac = 0;
     while (!czy_sortowac)
     {
-        printf("\nGotowy na sortowanie?\n");
+        printf("\nGotowy na sortowanie?\n\n1 tak\n0 nie\n");
         scanf("%d", &czy_sortowac);
         if (czy_sortowac)
         {

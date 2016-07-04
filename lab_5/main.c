@@ -387,7 +387,13 @@ int main(int argc, char* argv[])
     char* pozadana_akcja = 0;
     char* parametr_1 = 0;
     char* parametr_2 = 0;
-
+    
+    if ( argc < 5 )
+    {
+        zle_parametry();
+        return 1;
+    }
+    
     //
     //  Petla ladowania parametrow do programu
     //  Za kazdym przebiegiem petli aktywuje sie inna galaz wyrazenia switch

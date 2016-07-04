@@ -27,7 +27,7 @@ typedef struct Tekst_
 {
  char *t; //wskaznik na tekst
  int r;// rozmiar tekstu w bajtach
- int lw; // liczba wyrazów w tekscie
+ int lw; // liczba wyrazÃ³w w tekscie
 
 } Tekst;
 //=====================================================================================================

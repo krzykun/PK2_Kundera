@@ -1,0 +1,15 @@
+zadanie na funkcje biblioteczne
+
+while until end of file
+
+na tym tekscie trzeba znalezc lancuch znakow (wzorzec) i uzyc strstr() zadanie
+end
+
+w mainie wywolujemy ta funkcje wiele razy aby znalezc wszystkie wystapienia
+
+ostatnia czesc zadania - quicksort z strcmp zadanie
+
+end
+
+szybki wydajny kod
+systemy operacyjne pisze sie w C bo to jest swiat struktur polaczonych wskaznikami zadanie

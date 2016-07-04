@@ -17,7 +17,7 @@ Program wywoluje sie z lini komend (cmd) z nastepujacymi opcjami:
 hex.exe plik.in -ot plik.txt // zapisuje wczytany plik w postaci tekstowej
 hex.exe plik.in -ob plik.bin  // zapisuje wczytany plik w postaci binarnej
 hex.exe plik.in  -d FA36  // usuwa z pliku ciag bajtow
-hex.exe plik.in  -r  DB A908 FFAA33 // zastepuje jeden ciag bajtów innym ciagiem
+hex.exe plik.in  -r  DB A908 FFAA33 // zastepuje jeden ciag bajtÃ³w innym ciagiem
 Opcje -d i -r moga wystepowac z opcja -ot albo -ob
 */
 

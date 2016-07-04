@@ -33,7 +33,7 @@ int ls; //liczba wszystkich unikalnych slow
 int h; // wysokosc drzewa - liczba poziomow
 Slowo *korzen;
 Slowo *mf; // wskaznik na slowo najczesciej wystepujace
-Slowo **t; // realokowalna tablica wskaznik體 do wszystkich nie powtarzajacych sie sl體 w drzewie (realokacja co K=1000 elementow)
+Slowo **t; // realokowalna tablica wskaznik贸w do wszystkich nie powtarzajacych sie sl贸w w drzewie (realokacja co K=1000 elementow)
 // pomocna przy sortowaniu (przestawiamy wskazniki) - funkcja nr 2 (dalsza czesc zadania)
 
 } Slownik;
@@ -49,10 +49,10 @@ Slowo *lewy; //
 funkcja powinna korzystac z pomocniczej funkcji:
 Slowo * wstaw(Slownik *s,char *slowo);
 Funkcja zwraca adres nowo wstawionego slowa do drzewa, badz NULL gdy slowo jest juz w drzewie.
-Adres r髗ny od NULL wstawiamy do tablicy t.
-2) Napisac funkcje kt髍a zapisuje do pliku wszystkie slowa od najczesciej do najrzadziej wystepujacych
+Adres r贸zny od NULL wstawiamy do tablicy t.
+2) Napisac funkcje kt贸ra zapisuje do pliku wszystkie slowa od najczesciej do najrzadziej wystepujacych
 (skorzystac z tablicy t).
-3) Napisac funkcje kt髍a zwraca iloraz wysokosci drzewa oraz wysokosci tego drzewa
+3) Napisac funkcje kt贸ra zwraca iloraz wysokosci drzewa oraz wysokosci tego drzewa
 w przypadku gdyby bylo ono idealnie zrownowazone.
 */
 
@@ -391,7 +391,7 @@ int porownaj_czestosci(const void* param1, const void* param2)
 //==============================================================================================
 //  zapisz()
 /*
-    2) Napisac funkcje kt髍a zapisuje do pliku wszystkie slowa od najczesciej do najrzadziej wystepujacych
+    2) Napisac funkcje kt贸ra zapisuje do pliku wszystkie slowa od najczesciej do najrzadziej wystepujacych
     (skorzystac z tablicy t).
 
     Funkcja odpowiada za sortowanie poprzez funkcje qsort z biblioteki standardowej.

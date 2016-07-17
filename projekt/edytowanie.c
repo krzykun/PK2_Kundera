@@ -5,7 +5,7 @@
 /*
 */
 //=============================================================================================================
-void edytuj_zawartosc(struct HexByte*** tab, char* wybor_menu_edycji)
+void edytuj_zawartosc(HexByte*** tab, char* wybor_menu_edycji)
 {
     switch(*wybor_menu_edycji)
     {

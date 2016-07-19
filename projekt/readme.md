@@ -2,6 +2,7 @@
 
 ######Edytor Szesnastkowy
 
-Trwają prace nad rozdzieleniem kodu programu na pliki oraz nad wczytywaniem zawartości pliku.
+Program jest poprawnie rozdzielony na pliki oraz poprawnie wczytuje dane do struktury.
+Trwają prace nad rozszerzeniem funkcjonalności edycji zawartosci oraz udoskonalanie podziału funkcji na te komunikujące się  z użytkownikiem i wykonujące działania.
 
 Aktualny program jest wyposazony w menu uzytkownika i zaślepki dla wywołań funkcji.

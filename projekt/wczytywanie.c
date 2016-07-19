@@ -53,5 +53,5 @@ int wczytaj_plik(HexByte*** tab)
     }
 
     fclose(biezacy_plik);
-    return 1;
+    return ilosc_znakow;
 }

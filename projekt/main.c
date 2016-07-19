@@ -21,13 +21,13 @@ TRESC ZADANIA
 
 */
 //=============================================================================================================
-int menu_glowne(HexByte*** tab, char* wybor_menu_glowne, char* wybor_menu_poboczne, int* czy_istnieje_zawartosc)
+int menu_glowne(HexByte*** tab, char* wybor_menu_glowne, char* wybor_menu_poboczne, int* ilosc_znakow)
 {
     (*wybor_menu_glowne) = '\0';
     (*wybor_menu_poboczne) = '\0';
     pokaz_menu_glowne();
-    scanf("%s", wybor_menu_glowne); //%s obcina tekst ktory zostal wprowadzony do pierwszej litery
-    switch(*wybor_menu_glowne)
+    wczytaj_opcje(wybor_menu_glowne);
+    switch(*wybor_menu_glowne)  // switch obcina nam string do pojhedynczego chara z przodu
     {
         case 'p':
         {
@@ -37,20 +37,24 @@ int menu_glowne(HexByte*** tab, char* wybor_menu_glowne, char* wybor_menu_pobocz
 
         case 'w':
         {
-            (*czy_istnieje_zawartosc) = wczytaj_plik(tab);
+            (*ilosc_znakow) = wczytaj_plik(tab);
             return 1;
         }
 
         case 'e':
         {
-            if ( !(*czy_istnieje_zawartosc) )
+            if ( !(*ilosc_znakow) )
             {
                 printf("\nDo programu nie wczytano jeszcze zadnej zawartosci.\nAby to zrobic, wybierz opcje 'w' z menu glownego.\n");
                 return 1;
             }
-            pokaz_menu_edycji();
-            wczytaj_opcje(wybor_menu_poboczne);
-            edytuj_zawartosc(tab, wybor_menu_poboczne);
+            int czy_edytujemy = 1;
+            while (czy_edytujemy)
+            {
+                pokaz_menu_edycji();
+                wczytaj_opcje(wybor_menu_poboczne);
+                czy_edytujemy = edytuj_zawartosc(tab, ilosc_znakow, wybor_menu_poboczne);
+            }
             return 1;
         }
 
@@ -91,13 +95,16 @@ int main()
     (*tryb_pracy) = 1;
     char* wybor_menu_glowne = malloc(sizeof(char));
     char* wybor_menu_poboczne = malloc(sizeof(char));
-    int* czy_istnieje_zawartosc = 0;
+    int* czy_istnieje_zawartosc = malloc(sizeof(int));
+    (*czy_istnieje_zawartosc) = 0;
+    int* ilosc_znakow = malloc(sizeof(int));
+    (*ilosc_znakow) = 0;
 
     HexByte** tab = (HexByte**) NULL;   // rzutowanie oraz inicjalizacja nie jest konieczna
 
     while ( *tryb_pracy )
     {
-        *tryb_pracy = menu_glowne(&tab, wybor_menu_glowne, wybor_menu_poboczne, czy_istnieje_zawartosc);
+        *tryb_pracy = menu_glowne(&tab, wybor_menu_glowne, wybor_menu_poboczne, ilosc_znakow);
     }
     printf("\nNacisnij dowolny klawisz aby zakonczyc prace z programem...\n");
     getch();

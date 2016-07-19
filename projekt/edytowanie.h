@@ -4,6 +4,6 @@
 
 #define EDYTOWANIE_H_INCLUDED
 
-void edytuj_zawartosc(HexByte***, char*);
+int edytuj_zawartosc(HexByte***, int*, char*);
 
 // EDYTOWANIE_H_INCLUDED

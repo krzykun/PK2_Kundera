@@ -5,6 +5,7 @@ void wczytaj_opcje(char*);
 void wczytaj_wartosc(int*);
 void kom_podaj_ciag();
 void kom_podaj_poz();
+void kom_podaj_ilosc_do_usun();
 void pokaz_menu_edycji();
 void pokaz_menu_glowne();
 

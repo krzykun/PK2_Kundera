@@ -5,6 +5,7 @@
     wczytaj_wartosc     (int*)
     kom_podaj_ciag      ()
     kom_podaj_poz       ()
+    kom_podaj_ilosc_do_usun()
     pokaz_menu_edycji   ()
     pokaz_menu_glowne   ()
 */
@@ -35,10 +36,17 @@ void kom_podaj_poz()
     return;
 }
 
+void kom_podaj_ilosc_do_usun()
+{
+    printf("Podaj ilosc elementow do usuniecia:\n"
+           ">");
+    return;
+}
+
 void pokaz_menu_edycji()
 {
     printf("\n===EDYCJA PLIKU===\n"
-           "\tKomenda\tDzialanie\n"
+           "\tKomenda\t| Dzialanie\n\n"
            "\t1\tWyswietl obecnie przechowywana zawartosc\n"
            "\t2\tDodaj ciag na pozycje\n"
            "\t3\tUsun ciag od pozycji\n"
@@ -46,6 +54,8 @@ void pokaz_menu_edycji()
            "\t5\tZlicz wszystkie wystapienia ciagu\n"
            "\t6\tZnajdz i usun wszystkie wystapienia ciagu\n"
            "\t7\tZnajdz i zamien wszystkie wystapienia ciagu\n"
+           "\t8\tCofnij zmiane w zawartosci\n"
+           "\t9\tPonow zmiane w zawartosci\n"
            "\tx\tWyjdz z edycji pliku\n"
            ">"
            );
@@ -55,7 +65,7 @@ void pokaz_menu_edycji()
 void pokaz_menu_glowne()
 {
     printf("\nWitaj w programie szesnastkowej edycji plikow!\nDostepne komendy:\n\n"
-           "\tKomenda\tDzialanie\n"
+           "\tKomenda\t| Dzialanie\n\n"
            "\tp\tWyswietla informacje o programie\n"
            "\tw\tWczytuje plik do programu\n"
            "\te\tModyfikuj zawartosc pliku\n"

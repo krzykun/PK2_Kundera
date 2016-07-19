@@ -13,5 +13,17 @@ typedef struct _HexByte
    unsigned char bin_form;// w postaci binarnej
  } HexByte;
 
+typedef struct _Zmiana
+{
+    char* ciag;
+    int pozycja;
+    int typ_akcji; //dod = 0 us = 1  zam = 2?
+    struct Zmiana* nast;
+} Zmiana;
 
+typedef struct _Kolejka
+{
+    Zmiana* do_kolejki;
+    int ilosc_zmian;
+} Kolejka;
 // STRUKTURY_H_INCLUDED

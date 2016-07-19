@@ -21,7 +21,7 @@ TRESC ZADANIA
 
 */
 //=============================================================================================================
-int menu_glowne(HexByte*** tab, char* wybor_menu_glowne, char* wybor_menu_poboczne, int* ilosc_znakow)
+int menu_glowne(HexByte*** tab, char* wybor_menu_glowne, char* wybor_menu_poboczne, int* ilosc_znakow, Kolejka* kolejka_cofania, Kolejka* kolejka_ponawiania)
 {
     (*wybor_menu_glowne) = '\0';
     (*wybor_menu_poboczne) = '\0';
@@ -53,7 +53,7 @@ int menu_glowne(HexByte*** tab, char* wybor_menu_glowne, char* wybor_menu_pobocz
             {
                 pokaz_menu_edycji();
                 wczytaj_opcje(wybor_menu_poboczne);
-                czy_edytujemy = edytuj_zawartosc(tab, ilosc_znakow, wybor_menu_poboczne);
+                czy_edytujemy = edytuj_zawartosc(tab, ilosc_znakow, wybor_menu_poboczne, kolejka_cofania, kolejka_ponawiania);
             }
             return 1;
         }
@@ -99,16 +99,29 @@ int main()
     (*czy_istnieje_zawartosc) = 0;
     int* ilosc_znakow = malloc(sizeof(int));
     (*ilosc_znakow) = 0;
+    Kolejka* kolejka_cofania = malloc(sizeof(Kolejka));
+    kolejka_cofania->do_kolejki = (Zmiana*) 0;
+    Kolejka* kolejka_ponawiania = malloc(sizeof(Kolejka));
+    kolejka_ponawiania->do_kolejki = (Zmiana*) 0;
 
     HexByte** tab = (HexByte**) NULL;   // rzutowanie oraz inicjalizacja nie jest konieczna
 
     while ( *tryb_pracy )
     {
-        *tryb_pracy = menu_glowne(&tab, wybor_menu_glowne, wybor_menu_poboczne, ilosc_znakow);
+        *tryb_pracy = menu_glowne(&tab, wybor_menu_glowne, wybor_menu_poboczne, ilosc_znakow, kolejka_cofania, kolejka_ponawiania);
     }
     printf("\nNacisnij dowolny klawisz aby zakonczyc prace z programem...\n");
     getch();
 
+    realloc(tryb_pracy, 0);
+    realloc(wybor_menu_glowne, 0);
+    realloc(wybor_menu_poboczne, 0);
+    realloc(czy_istnieje_zawartosc, 0);
+    realloc(ilosc_znakow, 0);
+    realloc(kolejka_cofania->do_kolejki, 0);
+    realloc(kolejka_cofania, 0);
+    realloc(kolejka_ponawiania->do_kolejki, 0);
+    realloc(kolejka_ponawiania, 0);
     realloc(tab, 0);
     return 0;
 }

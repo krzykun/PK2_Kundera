@@ -1,5 +1,8 @@
-#include "struktury.h"
 #include <stdio.h>
+#include <stdlib.h>
+
+#include "struktury.h"
+#include "komunikacja.h"
 
 //=======================================================================================================
 //  wczytaj_plik()
@@ -19,6 +22,7 @@ int wczytaj_plik(HexByte*** tab)
     if (biezacy_plik == NULL)
     {
         printf("Nie udalo sie otworzyc pliku. Sprawdz czy plik istnieje.\n");
+        poczekaj_na_akcje();
         return 0;
     }
 

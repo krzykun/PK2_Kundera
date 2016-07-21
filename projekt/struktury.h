@@ -17,7 +17,7 @@ typedef struct _Zmiana
 {
     char* ciag;
     int pozycja;
-    int typ_akcji; //dod = 0 us = 1  zam = 2?
+    int typ_akcji; //dod = 1 us = 0
     struct Zmiana* nast;
 } Zmiana;
 

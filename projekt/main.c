@@ -25,13 +25,15 @@ int menu_glowne(HexByte*** tab, char* wybor_menu_glowne, char* wybor_menu_pobocz
 {
     (*wybor_menu_glowne) = '\0';
     (*wybor_menu_poboczne) = '\0';
+    wydrukuj_linie(15);
     pokaz_menu_glowne();
     wczytaj_opcje(wybor_menu_glowne);
-    switch(*wybor_menu_glowne)  // switch obcina nam string do pojhedynczego chara z przodu
+    switch(*wybor_menu_glowne)  // switch obcina nam string do pojedynczego chara z przodu
     {
         case 'p':
         {
             printf("\nInformacje o programie\n\n");
+            poczekaj_na_akcje();
             return 1;
         }
 
@@ -46,11 +48,13 @@ int menu_glowne(HexByte*** tab, char* wybor_menu_glowne, char* wybor_menu_pobocz
             if ( !(*ilosc_znakow) )
             {
                 printf("\nDo programu nie wczytano jeszcze zadnej zawartosci.\nAby to zrobic, wybierz opcje 'w' z menu glownego.\n");
+                poczekaj_na_akcje();
                 return 1;
             }
             int czy_edytujemy = 1;
             while (czy_edytujemy)
             {
+                wydrukuj_linie(9);
                 pokaz_menu_edycji();
                 wczytaj_opcje(wybor_menu_poboczne);
                 czy_edytujemy = edytuj_zawartosc(tab, ilosc_znakow, wybor_menu_poboczne, kolejka_cofania, kolejka_ponawiania);
@@ -73,6 +77,7 @@ int menu_glowne(HexByte*** tab, char* wybor_menu_glowne, char* wybor_menu_pobocz
         default:
         {
             printf("\nWprowadzony znak nie posiada przypisanej funkcji.\n");
+            poczekaj_na_akcje();
             return 1;
         }
     }
@@ -101,8 +106,10 @@ int main()
     (*ilosc_znakow) = 0;
     Kolejka* kolejka_cofania = malloc(sizeof(Kolejka));
     kolejka_cofania->do_kolejki = (Zmiana*) 0;
+    kolejka_cofania->ilosc_zmian = 0;
     Kolejka* kolejka_ponawiania = malloc(sizeof(Kolejka));
     kolejka_ponawiania->do_kolejki = (Zmiana*) 0;
+    kolejka_ponawiania->ilosc_zmian = 0;
 
     HexByte** tab = (HexByte**) NULL;   // rzutowanie oraz inicjalizacja nie jest konieczna
 

@@ -6,6 +6,9 @@ void wczytaj_wartosc(int*);
 void kom_podaj_ciag();
 void kom_podaj_poz();
 void kom_podaj_ilosc_do_usun();
+void wydrukuj_linie(int);
+void brak_zmian_w_kolejce(int);
+void poczekaj_na_akcje();
 void pokaz_menu_edycji();
 void pokaz_menu_glowne();
 

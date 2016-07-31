@@ -7,4 +7,6 @@
 20.07 Aktualizacja struktur Kolejka i Zmiana. Dodanie obslugi kolejek. Rozdzielenie na pliki obslugi kolejek i obslugi zawartosci.
 Mozliwe jest juz cofanie i ponawianie zmian w zawartosci. Wczesniej dzialalo juz dodawanie i usuwanie z zawartosci, szuaknie w zawartosci oraz zamiana i usuwanie z szukaniem.
 
-Nastepne cele: wiecej testy cofania i ponawiania zmian podczas operacji na tekscie z wyszukiwaniem (amien i usun wiele wystapien ciagu), dodanie zapisywania do pliku, wybor pliku wyjsciowego, rozszerzenie dokumentacji.
+31.07 Program posiada dostepny opis wywolywany z menu. Program zapisuje zawartosc do pliku. Dodano komentarze. Aktualizacaj poprzednich funkcji.
+
+Nastepne cele: Rozszerzenie dokumentacji.

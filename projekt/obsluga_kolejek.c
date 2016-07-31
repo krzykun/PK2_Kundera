@@ -3,7 +3,7 @@
 //=============================================================================================================
 //  dodaj_do_kolejki_cofania
 /*
-    Funkcja dodaje zmiane do kolejki cofania.
+    Funkcja dodaje zmiane do kolejki cofania. Wywolywana jest przy dodaniu/usunieciu elementu ciagu.
     Funkcja dodajaca do kolejki ponawiania nie istnieje, poniewaz dodajemy do niej tylko gdy cofamy zmiane.
 
     !!! FUNKCJA ALOKUJE PAMIEC DLA NOWEJ ZMIANY

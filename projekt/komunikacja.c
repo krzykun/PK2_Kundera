@@ -1,14 +1,23 @@
 #include <stdio.h>
 #include <conio.h>
+#include <stdlib.h>
+
+#include "struktury.h"
 
 //=============================================================================================================
 //  Funkcje komunikacji z uzytkownikiem
 /*
     wczytaj_opcje       (char*)
     wczytaj_wartosc     (int*)
+
     kom_podaj_ciag      ()
     kom_podaj_poz       ()
     kom_podaj_ilosc_do_usun()
+    kom_czy_nadpisac_zawartosc()
+    kom_podaj_nazwe_pliku()
+    kom_brak_zawartosci ()
+
+    informacje_o_programie()
     wydrukuj_linie      (int)
     brak_zmian_w_kolejce(int)
     poczekaj_na_akcje   ()
@@ -22,12 +31,14 @@ void wczytaj_opcje(char* wczytaj_do_mnie)
     return;
 }
 
+//=======================================================================================================s
 void wczytaj_wartosc(int* wczytaj_do_mnie)
 {
     scanf("%d", wczytaj_do_mnie);
     return;
 }
 
+//=======================================================================================================
 void kom_podaj_ciag()
 {
     printf("Podaj ciag:\n"
@@ -35,6 +46,7 @@ void kom_podaj_ciag()
     return;
 }
 
+//=======================================================================================================
 void kom_podaj_poz()
 {
     printf("Podaj pozycje:\n"
@@ -42,6 +54,7 @@ void kom_podaj_poz()
     return;
 }
 
+//=======================================================================================================
 void kom_podaj_ilosc_do_usun()
 {
     printf("Podaj ilosc elementow do usuniecia:\n"
@@ -49,6 +62,52 @@ void kom_podaj_ilosc_do_usun()
     return;
 }
 
+//=======================================================================================================
+void kom_czy_nadpisac_zawartosc()
+{
+    printf("Program posiada juz wczytana zawartosc. Czy napewno chcesz kontynuowac? (Poprzednia zawartosc zostanie utracona))\n"
+           "\tt\ttak\n"
+           "\tn\tnie\n"
+           ">");
+    return;
+}
+
+//=======================================================================================================
+void kom_podaj_nazwe_pliku()
+{
+    printf("Podaj nazwe pliku:\n>");
+    return;
+}
+
+//=======================================================================================================
+void kom_brak_zawartosci()
+{
+    printf("Brak wczytanej zawartosci. Nie moge nic zapisac.\n");
+    return;
+}
+
+//=======================================================================================================
+void kom_nie_mozna_otworzyc_pliku()
+{
+    printf("Nie udalo sie otworzyc pliku.\n");
+    return;
+}
+
+//=======================================================================================================
+void informacje_o_programie()
+{
+    printf("\nWitaj w programie edycji plikow szesnastkowych!\n"
+           "Program jest zdolny do wczytania wskazanego pojedynczego pliku, edycji jego\n"
+           "zawartosci w wartosciach szesnastkowych (np. \"ab0;\" w zapisie szesnastkowym\n"
+           " to 61 62 30 3B) oraz zapisu do wybranego pliku.\n"
+           "Program daje mozliwosci edycji: wstawiania, usuwania, znajdywania znakow w\n"
+           "zawartosci zamiany ciagu oraz cofania i ponawiania zmian.\n"
+           "Wszystkie opcje sa opisane.\n"
+           );
+    return;
+}
+
+//=======================================================================================================
 void wydrukuj_linie(int tyle)
 {
     int i;
@@ -59,6 +118,7 @@ void wydrukuj_linie(int tyle)
     return;
 }
 
+//=======================================================================================================
 void brak_zmian_w_kolejce(int ktorej)
 {
     if ( ktorej )
@@ -72,11 +132,66 @@ void brak_zmian_w_kolejce(int ktorej)
     return;
 }
 
+//=======================================================================================================
 void poczekaj_na_akcje()
 {
     printf("\nNacisnij dowolny klawisz aby kontynuowac...\n");
     getch();
     return;
+}
+
+//=======================================================================================================
+int otworz_plik(char* nazwa_biezacego_pliku, FILE* biezacy_plik, char* sposob_odczytu)
+{
+    scanf("%s", nazwa_biezacego_pliku);
+
+    biezacy_plik = fopen(nazwa_biezacego_pliku, sposob_odczytu);
+    if (biezacy_plik == NULL)
+    {
+        printf("Nie udalo sie otworzyc pliku. Sprawdz czy plik istnieje.\n");
+        poczekaj_na_akcje();
+        return 0;
+    }
+
+    return 1;
+}
+
+//=======================================================================================================
+// ochrona_przed_utrata_zawartosci
+/*
+    Funkcja zwraca 1 jak uzytkownika nie interesuje poprzednia zawartosc i chce kontynuowac(wczytac
+    nowa wartosc albo wylaczyc program)
+
+    !!! FUNKCJA REALOKUJE TABLICE tab JESLI TAKA BEDZIE DECYZJA
+*/
+//=======================================================================================================
+int ochrona_przed_utrata_zawartosci(HexByte*** tab)
+{
+    if ( *tab )
+    {
+        char decyzja;
+        kom_czy_nadpisac_zawartosc();
+        wczytaj_opcje(&decyzja);
+        switch(decyzja)
+        {
+        case 'n':   // Nie chce wczytac nowej wartosci do tablicy tab
+            {
+                return 0;
+            }
+        case 't':   //  Spoko, wczytuj nowa wartosc
+            {
+                *tab = realloc(*tab, 0);
+                return 1;
+            }
+        default:
+            {
+                printf("\nWprowadzony znak nie posiada przypisanej funkcji.\n");
+                poczekaj_na_akcje();
+                return 0;
+            }
+        }
+    }
+    else return 1;
 }
 
 void pokaz_menu_edycji()

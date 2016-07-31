@@ -9,7 +9,7 @@
 //=============================================================================================================
 typedef struct _HexByte
  {
-   char text_form[2]; // reprezntacja bajtu w postaci 16-owej (ascii)
+   char text_form[2]; // reprezentacja bajtu w postaci 16-owej (ascii)
    unsigned char bin_form;// w postaci binarnej
  } HexByte;
 

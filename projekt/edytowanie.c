@@ -32,6 +32,7 @@ void wyswietl_zawartosc(HexByte** tab, int i)
 //=============================================================================================================
 //  edytuj_zawartosc
 /*
+    Funkcja zajmuje sie edycja zawartosci. Zwraca wartosc 0 gdy uzytkownik chce zaprzestac dalszej edycji.
 */
 //=============================================================================================================
 int edytuj_zawartosc(HexByte*** tab, int* ilosc_znakow, char* wybor_menu_edycji, Kolejka* kolejka_cofania, Kolejka* kolejka_ponawiania)

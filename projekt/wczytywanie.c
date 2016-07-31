@@ -4,31 +4,28 @@
 #include "struktury.h"
 #include "komunikacja.h"
 
+
 //=======================================================================================================
 //  wczytaj_plik()
 /*
+    Otwiera plik, odczytuje bajt-po-bajcie plik wejsciowy uzywajac bufora unsigned char.
 
+    !!! REALOKUJE tab PRZY KAZDYM ODCZYCIE
 */
 //=======================================================================================================
 int wczytaj_plik(HexByte*** tab)
 {
     char* nazwa_biezacego_pliku = malloc(sizeof(char));
+    FILE* biezacy_plik;
 
-    //  Komunikacja z uzytkownikiem
-    printf("Podaj nazwe pliku do otwarcia:\n>");
-    scanf("%s", nazwa_biezacego_pliku);
-
-    FILE* biezacy_plik = fopen(nazwa_biezacego_pliku, "r");
-    if (biezacy_plik == NULL)
+    kom_podaj_nazwe_pliku();
+    if ( !(otworz_plik(nazwa_biezacego_pliku, biezacy_plik, "r")) )
     {
-        printf("Nie udalo sie otworzyc pliku. Sprawdz czy plik istnieje.\n");
-        poczekaj_na_akcje();
+        kom_nie_mozna_otworzyc_pliku();
         return 0;
     }
 
-    //
-    //  Petla wczytywania zawartosci pliku do tablicy dynamicznej tab
-    //
+    biezacy_plik = fopen(nazwa_biezacego_pliku, "r");
 
     //  Deklaracja zmiennej iteracyjnej ilosc_znakow ktora potem powie nam jak duzo wczytalismy
     int ilosc_znakow = 0;
@@ -39,6 +36,10 @@ int wczytaj_plik(HexByte*** tab)
 
     //  wczytaj pierwszy element, robimy to aby miec ladny warunek wykonania nastepnej petli while
     int czy_zostalo_do_wczytania =  fread(bufor_bitowy, sizeof(unsigned char), 1, biezacy_plik);
+
+    //
+    //  Petla wczytywania zawartosci pliku do tablicy dynamicznej tab
+    //
 
     while ( czy_zostalo_do_wczytania != 0 )
     {

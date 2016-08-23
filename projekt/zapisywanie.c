@@ -19,17 +19,17 @@
 void zapisywanie_posprzataj(HexByte*** tab, int* ilosc_znakow, Kolejka* kolejka_cofania, Kolejka* kolejka_ponawiania)
 {
     Zmiana* do_usuniecia;
-    do_usuniecia = pobierz_z_kolejki(tab, ilosc_znakow, kolejka_ponawiania, 0);
+    do_usuniecia = pobierz_z_kolejki(tab, ilosc_znakow, kolejka_ponawiania, 2);
     while ( do_usuniecia != 0 )
     {
         free(do_usuniecia);
-        do_usuniecia = pobierz_z_kolejki(tab, ilosc_znakow, kolejka_ponawiania, 0);
+        do_usuniecia = pobierz_z_kolejki(tab, ilosc_znakow, kolejka_ponawiania, 2);
     }
-    do_usuniecia = pobierz_z_kolejki(tab, ilosc_znakow, kolejka_cofania, 1);
+    do_usuniecia = pobierz_z_kolejki(tab, ilosc_znakow, kolejka_cofania, 2);
     while ( do_usuniecia != 0 )
     {
         free(do_usuniecia);
-        do_usuniecia = pobierz_z_kolejki(tab, ilosc_znakow, kolejka_cofania, 1);
+        do_usuniecia = pobierz_z_kolejki(tab, ilosc_znakow, kolejka_cofania, 2);
     }
 
     (*tab) = realloc(*tab, 0);

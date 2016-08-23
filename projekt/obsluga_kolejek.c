@@ -48,31 +48,34 @@ Zmiana* pobierz_z_kolejki(HexByte*** tab, int* ilosc_znakow, Kolejka* kolejka, i
 {
     if ( kolejka->do_kolejki )
     {
-        if ( czy_odwrocic_wstaw_us )
+        if ( czy_odwrocic_wstaw_us != 2 ) //w trakcie pracy wynosi 1 lub 0. Przy usuwaniu, wynosi 2
         {
-            if ( !(kolejka->do_kolejki->typ_akcji) )
+            if ( czy_odwrocic_wstaw_us )
             {
-                //  !(typ_akcji) == 1 oznacza ze przy dodawaniu do kolejki zawartosc usuwalismy
-                //  wiec teraz chcemy ja dodac
+                if ( !(kolejka->do_kolejki->typ_akcji) )
+                {
+                    //  !(typ_akcji) == 1 oznacza ze przy dodawaniu do kolejki zawartosc usuwalismy
+                    //  wiec teraz chcemy ja dodac
 
-                wstaw_ciag_na_pozycje(tab, ilosc_znakow, kolejka->do_kolejki->pozycja, kolejka->do_kolejki->ciag, strlen(kolejka->do_kolejki->ciag));
+                    wstaw_ciag_na_pozycje(tab, ilosc_znakow, kolejka->do_kolejki->pozycja, kolejka->do_kolejki->ciag, strlen(kolejka->do_kolejki->ciag));
+                }
+                else
+                {
+                    usun_elementy_z_pozycji(tab, ilosc_znakow, kolejka->do_kolejki->pozycja, strlen(kolejka->do_kolejki->ciag), (Kolejka*) 0 );
+                }
             }
             else
             {
-                usun_elementy_z_pozycji(tab, ilosc_znakow, kolejka->do_kolejki->pozycja, strlen(kolejka->do_kolejki->ciag), (Kolejka*) 0 );
-            }
-        }
-        else
-        {
-            if ( kolejka->do_kolejki->typ_akcji )
-            {
-                // Tutaj, zawartosc ktora pierwotnie dodawalismy chcemy znowu dodac, wszystko jest w porzadku
+                if ( kolejka->do_kolejki->typ_akcji )
+                {
+                    // Tutaj, zawartosc ktora pierwotnie dodawalismy chcemy znowu dodac, wszystko jest w porzadku
 
-                wstaw_ciag_na_pozycje(tab, ilosc_znakow, kolejka->do_kolejki->pozycja, kolejka->do_kolejki->ciag, strlen(kolejka->do_kolejki->ciag));
-            }
-            else
-            {
-                usun_elementy_z_pozycji(tab, ilosc_znakow, kolejka->do_kolejki->pozycja, strlen(kolejka->do_kolejki->ciag), (Kolejka*) 0 );
+                    wstaw_ciag_na_pozycje(tab, ilosc_znakow, kolejka->do_kolejki->pozycja, kolejka->do_kolejki->ciag, strlen(kolejka->do_kolejki->ciag));
+                }
+                else
+                {
+                    usun_elementy_z_pozycji(tab, ilosc_znakow, kolejka->do_kolejki->pozycja, strlen(kolejka->do_kolejki->ciag), (Kolejka*) 0 );
+                }
             }
         }
 

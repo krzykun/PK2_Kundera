@@ -9,4 +9,5 @@ Mozliwe jest juz cofanie i ponawianie zmian w zawartosci. Wczesniej dzialalo juz
 
 31.07 Program posiada dostepny opis wywolywany z menu. Program zapisuje zawartosc do pliku. Dodano komentarze. Aktualizacaj poprzednich funkcji.
 
+Dodano dokumentację.
 Projekt ukończony.
